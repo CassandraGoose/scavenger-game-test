@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
   Rigidbody2D rigidbody2d;
-  float speed = 3.0f;
   float horizontal;
   float vertical;
   // Start is called before the first frame update
@@ -21,10 +20,12 @@ public class PlayerController : MonoBehaviour
     vertical = Input.GetAxis("Vertical");
   }
 
-  void FixedUpdate() {
-    Vector2 position = transform.position;
-    position.x = position.x + speed * horizontal * Time.deltaTime;
-    position.y = position.y + speed * vertical * Time.deltaTime;
+  void FixedUpdate()
+  {
+    Vector2 position = rigidbody2d.position;
+    position.x = position.x + 3.0f * horizontal * Time.deltaTime;
+    position.y = position.y + 3.0f * vertical * Time.deltaTime;
+
     rigidbody2d.MovePosition(position);
   }
 }
