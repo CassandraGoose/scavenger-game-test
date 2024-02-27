@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour
   Rigidbody2D rigidbody2d;
   float horizontal;
   float vertical;
+
+  public OutdoorDoorwayVectorValue startingPosition;
   // Start is called before the first frame update
   void Start()
   {
     rigidbody2d = GetComponent<Rigidbody2D>();
+    transform.position = startingPosition.initialValue;
   }
 
   // Update is called once per frame
