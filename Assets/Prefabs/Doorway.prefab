@@ -62,7 +62,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.028715014, y: -0.07794094}
@@ -91,3 +91,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: SampleScene
+  playerPosition: {x: 0, y: 0}
+  PlayerStorage: {fileID: 11400000, guid: bb12ac3caf27046e89820356b4753100, type: 2}

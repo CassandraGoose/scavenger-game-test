@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 170078520, guid: 85e8e2d1e2bc0481fb46f0043e697050, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -143,4 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed1066a5be374678a839eab4ecab64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnableObjects: []
+  spawnableObjects: {fileID: 11400000, guid: d97b0cf97f10348288048a1562c2ba65, type: 2}
+  sparklePrefab: {fileID: 3925314023389083769, guid: 3a5f4c82547c84ee580a6a28f9e53c92, type: 3}

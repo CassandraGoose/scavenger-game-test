@@ -13,8 +13,6 @@ public class Doorway : MonoBehaviour
   public void OnTriggerEnter2D(Collider2D otherCollider) {
     Debug.Log("hi");
     if (otherCollider.CompareTag("Player") && !otherCollider.isTrigger) {
-      Debug.Log(PlayerStorage);
-      Debug.Log(playerPosition);
       PlayerStorage.initialValue = playerPosition;
       SceneManager.LoadScene(nextScene);
     }
