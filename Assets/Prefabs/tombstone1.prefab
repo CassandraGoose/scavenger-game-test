@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8746265768494875000}
   - component: {fileID: 657542838609404450}
   - component: {fileID: 7124312846585321728}
+  - component: {fileID: -6676958833165179580}
   m_Layer: 0
   m_Name: tombstone1
   m_TagString: Untagged
@@ -130,3 +131,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9288292, y: 0.28871346}
   m_EdgeRadius: 0
+--- !u!114 &-6676958833165179580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5752936049404987604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed1066a5be374678a839eab4ecab64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnableObjects: []
+  sparklePrefab: {fileID: 3925314023389083769, guid: 3a5f4c82547c84ee580a6a28f9e53c92, type: 3}

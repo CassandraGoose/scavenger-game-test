@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6218141058772562670}
   - component: {fileID: 8560144957518867908}
+  - component: {fileID: 3908639558806014993}
   m_Layer: 0
   m_Name: candles
   m_TagString: Untagged
@@ -84,3 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3908639558806014993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928412130063374840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed1066a5be374678a839eab4ecab64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnableObjects: []
+  sparklePrefab: {fileID: 3925314023389083769, guid: 3a5f4c82547c84ee580a6a28f9e53c92, type: 3}
