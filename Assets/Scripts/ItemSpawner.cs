@@ -6,17 +6,20 @@ public class ItemSpawner : MonoBehaviour
 {
   public SpawnableItems spawnableObjects;
   public GameObject sparklePrefab;
-
+  GameObject foundObject;
   // Start is called before the first frame update
   void Start()
   {
-    GameObject data = spawnableObjects.GetRandomSpawnable();
-    // Debug.Log(JsonUtility.ToJson(spawnableObjects, true));
-    // GameObject randomItem = 
-    // int random = Random.Range(0, spawnableObjects.Count - 1);
-    // item will be shown when player interacts with sparkle. 
-    // item is at spawnableObjects[random]
-    Debug.Log(data);
-    Instantiate(sparklePrefab, transform.position, Quaternion.identity);
+    foundObject = spawnableObjects.GetRandomSpawnable();
+    GameObject sparkleObject = Instantiate(sparklePrefab, transform.position, Quaternion.identity);
+    Sparkle sparkle = sparkleObject.AddComponent<Sparkle>();
+    sparkle.SetUp(sparkleObject);
   }
+
+  void showFound()
+  {
+    FindableItem foundItem = Instantiate(foundObject, transform.position, Quaternion.identity).GetComponent<FindableItem>();
+    foundItem.Present();
+  }
+
 }

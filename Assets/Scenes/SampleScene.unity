@@ -241,6 +241,10 @@ PrefabInstance:
       propertyPath: PlayerStorage
       value: 
       objectReference: {fileID: 11400000, guid: bb12ac3caf27046e89820356b4753100, type: 2}
+    - target: {fileID: 5061100580689540096, guid: afb91e9c15bcc40d6bf0b5390ce5f186, type: 3}
+      propertyPath: playerPosition.y
+      value: -4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -452,6 +456,10 @@ PrefabInstance:
       propertyPath: PlayerStorage
       value: 
       objectReference: {fileID: 11400000, guid: bb12ac3caf27046e89820356b4753100, type: 2}
+    - target: {fileID: 5061100580689540096, guid: afb91e9c15bcc40d6bf0b5390ce5f186, type: 3}
+      propertyPath: playerPosition.y
+      value: -4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1795,6 +1803,10 @@ PrefabInstance:
       propertyPath: PlayerStorage
       value: 
       objectReference: {fileID: 11400000, guid: bb12ac3caf27046e89820356b4753100, type: 2}
+    - target: {fileID: 5061100580689540096, guid: afb91e9c15bcc40d6bf0b5390ce5f186, type: 3}
+      propertyPath: playerPosition.y
+      value: -4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
