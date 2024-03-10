@@ -11,7 +11,6 @@ public class Doorway : MonoBehaviour
   public OutdoorDoorwayVectorValue PlayerStorage;
 
   public void OnTriggerEnter2D(Collider2D otherCollider) {
-    Debug.Log("hi");
     if (otherCollider.CompareTag("Player") && !otherCollider.isTrigger) {
       PlayerStorage.initialValue = playerPosition;
       SceneManager.LoadScene(nextScene);
