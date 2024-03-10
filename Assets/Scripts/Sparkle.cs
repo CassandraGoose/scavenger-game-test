@@ -16,24 +16,9 @@ public class Sparkle : MonoBehaviour
     Hide();
   }
 
-  void Update()
-  {
-
-    Collider2D sparkleCollider;
-    Collider2D player = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
-
-  if (sparkle)
-  {
-    sparkleCollider = sparkle.GetComponent<Collider2D>();
-    if (Input.GetButtonDown("Submit") && Physics2D.Distance(sparkleCollider, player).distance <= -1f)
-    {
-      Debug.Log("GET ITEM");
-    }
-  }
-  }
-
   void OnTriggerStay2D(Collider2D player)
   {
+    // this probably would have been better as a circle cast!!! then, use onTriggerStay2d with a small collider to do the above 'get item' stuff!!!
     PlayerController playerController = player.GetComponent<PlayerController>();
 
     if (playerController != null)
@@ -42,7 +27,7 @@ public class Sparkle : MonoBehaviour
     }
   }
 
-  private IEnumerator FadeIn()
+  public IEnumerator FadeIn()
   {
     if (sparkleSprite)
     {
@@ -66,5 +51,4 @@ public class Sparkle : MonoBehaviour
     tmp.a = 0f;
     sparkleSprite.color = tmp;
   }
-
 }
