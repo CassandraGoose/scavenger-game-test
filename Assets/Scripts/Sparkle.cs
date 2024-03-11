@@ -51,4 +51,9 @@ public class Sparkle : MonoBehaviour
     tmp.a = 0f;
     sparkleSprite.color = tmp;
   }
+
+  public void DestroySparkle()
+  {
+    Destroy(gameObject);
+  }
 }

@@ -11,6 +11,8 @@ public class ItemSpawner : MonoBehaviour
   Sparkle sparkle;
   GameObject foundObject;
   public GameObject uiBox;
+  public GameObject foundItem;
+  public Button acceptItemButton;
 
   // Start is called before the first frame update
   void Start()
@@ -21,6 +23,7 @@ public class ItemSpawner : MonoBehaviour
     sparkle.SetUp(sparkleObject);
     uiBox.SetActive(false);
     ignoreSparkleCollision();
+    acceptItemButton.onClick.AddListener(triggerCollectItem);
   }
 
   void Update()
@@ -48,14 +51,21 @@ public class ItemSpawner : MonoBehaviour
   {
     uiBox.SetActive(true);
     Sprite foundObjectSprite = foundObject.GetComponent<SpriteRenderer>().sprite;
-    GameObject foundItem = GameObject.Find("FoundItem");
+    foundItem = GameObject.Find("FoundItem");
     Image foundItemImage = foundItem.GetComponent<Image>();
 
     foundItemImage.sprite = foundObjectSprite;
 
     GameObject foundItemText = GameObject.Find("FoundItemText");
     foundItemText.GetComponent<TextMeshProUGUI>().text = "Would you like to take this " + foundObject.name + "?";
-    // foundItemText.text = "Would you like to take this ";
+  }
+
+  public void triggerCollectItem()
+  {
+    PlayerController player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    player.CollectItem(foundItem);
+    uiBox.SetActive(false);
+    sparkle.DestroySparkle();
   }
 
 }
