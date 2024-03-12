@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
   Rigidbody2D rigidbody2d;
   float horizontal;
   float vertical;
-  List<GameObject> collectedItems;
+  List<SpawnableItem> collectedItems;
 
   public OutdoorDoorwayVectorValue startingPosition;
   // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
   {
     rigidbody2d = GetComponent<Rigidbody2D>();
     transform.position = startingPosition.initialValue;
-    collectedItems = new List<GameObject>();
+    collectedItems = new List<SpawnableItem>();
   }
 
   // Update is called once per frame
@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour
     rigidbody2d.MovePosition(position);
   }
 
-  public void CollectItem(GameObject fish)
+  public void CollectItem(SpawnableItem fish)
   {
-    Debug.Log(collectedItems.Count);
     collectedItems.Add(fish);
-    Debug.Log(collectedItems.Count);
+    foreach(var item in collectedItems)
+    {
+      Debug.Log(item.ItemName);
+    }
   }
 }

@@ -6,23 +6,22 @@ using TMPro;
 
 public class ItemSpawner : MonoBehaviour
 {
-  public SpawnableItems spawnableObjects;
-  public GameObject sparklePrefab;
-  Sparkle sparkle;
-  GameObject foundObject;
+  // set in inspector
+  public List<GameObject> spawnableObjects;
   public GameObject uiBox;
-  public GameObject foundItem;
   public Button acceptItemButton;
 
-  // Start is called before the first frame update
+
+  public List<SpawnableItem> findableItems;
+  public GameObject sparklePrefab;
+  SpawnableItem foundObject;
+
   void Start()
   {
-    foundObject = spawnableObjects.GetRandomSpawnable();
-    GameObject sparkleObject = Instantiate(sparklePrefab, transform.position, Quaternion.identity);
-    sparkle = sparkleObject.AddComponent<Sparkle>();
-    sparkle.SetUp(sparkleObject);
+    createFindableItems();
+    foundObject = GetRandomSpawnable();
+    Instantiate(sparklePrefab, transform.position, Quaternion.identity);
     uiBox.SetActive(false);
-    ignoreSparkleCollision();
     acceptItemButton.onClick.AddListener(triggerCollectItem);
   }
 
@@ -40,32 +39,39 @@ public class ItemSpawner : MonoBehaviour
     }
   }
 
-  void ignoreSparkleCollision()
-  {
-    Collider2D sparkleCollider = sparkle.GetComponent<Collider2D>();
-    Physics2D.IgnoreCollision(sparkleCollider, gameObject.GetComponent<Collider2D>());
-  }
-
-
   public void DisplayUIBox()
   {
     uiBox.SetActive(true);
-    Sprite foundObjectSprite = foundObject.GetComponent<SpriteRenderer>().sprite;
-    foundItem = GameObject.Find("FoundItem");
-    Image foundItemImage = foundItem.GetComponent<Image>();
+    Image foundItemUI = GameObject.Find("FoundItemUI").GetComponent<Image>();
 
-    foundItemImage.sprite = foundObjectSprite;
+    foundItemUI.sprite = foundObject.Prefab.GetComponent<SpriteRenderer>().sprite;
 
     GameObject foundItemText = GameObject.Find("FoundItemText");
-    foundItemText.GetComponent<TextMeshProUGUI>().text = "Would you like to take this " + foundObject.name + "?";
+    foundItemText.GetComponent<TextMeshProUGUI>().text = "Would you like to take this " + foundObject.ItemName + "?";
+  }
+
+  List<SpawnableItem> createFindableItems()
+  {
+    foreach (var item in spawnableObjects)
+    {
+      SpawnableItem detailedItem = new SpawnableItem(item.name, item);
+      findableItems.Add(detailedItem);
+    }
+    return findableItems;
+  }
+
+  public SpawnableItem GetRandomSpawnable()
+  {
+    int random = Random.Range(0, spawnableObjects.Count - 1);
+    return findableItems[random];
   }
 
   public void triggerCollectItem()
   {
     PlayerController player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-    player.CollectItem(foundItem);
+    player.CollectItem(foundObject);
     uiBox.SetActive(false);
-    sparkle.DestroySparkle();
+    // all of this is for naught unless we tell unity to not erase and reset everything every time a new scene loads.
   }
 
 }

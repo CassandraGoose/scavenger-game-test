@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3049440530828271841}
   m_Layer: 0
   m_Name: house_plant
-  m_TagString: Untagged
+  m_TagString: ItemSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,5 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed1066a5be374678a839eab4ecab64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnableObjects: {fileID: 11400000, guid: d97b0cf97f10348288048a1562c2ba65, type: 2}
+  spawnableObjects:
+  - {fileID: 3184900288323230553, guid: 9e8cc0fc9b5d449208f7e0184df3acf6, type: 3}
+  - {fileID: 5993418422212434678, guid: e9dba0162ecf74904b939bc20ae9f59b, type: 3}
+  - {fileID: 2707231905494807157, guid: 495102cd72a2e44568f935808517c499, type: 3}
+  - {fileID: 4837900017145894728, guid: 73a48085fb1c648f2925536095f4f048, type: 3}
+  - {fileID: 8372440849310003156, guid: 9fe154c3a4e5847e19e1688d78f91e31, type: 3}
+  - {fileID: 9158363591085026448, guid: db82fb6e16b094605b05c8f567986183, type: 3}
+  uiBox: {fileID: 0}
+  acceptItemButton: {fileID: 0}
+  findableItems: []
   sparklePrefab: {fileID: 3925314023389083769, guid: 3a5f4c82547c84ee580a6a28f9e53c92, type: 3}

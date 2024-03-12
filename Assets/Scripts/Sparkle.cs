@@ -7,20 +7,16 @@ using UnityEngine;
 public class Sparkle : MonoBehaviour
 {
   SpriteRenderer sparkleSprite;
-  GameObject sparkle;
 
-  public void SetUp(GameObject sparkleObject)
+  void Start()
   {
-    sparkle = sparkleObject;
-    sparkleSprite = sparkle.GetComponent<SpriteRenderer>();
+    sparkleSprite = gameObject.GetComponent<SpriteRenderer>();
     Hide();
   }
 
   void OnTriggerStay2D(Collider2D player)
   {
-    // this probably would have been better as a circle cast!!! then, use onTriggerStay2d with a small collider to do the above 'get item' stuff!!!
     PlayerController playerController = player.GetComponent<PlayerController>();
-
     if (playerController != null)
     {
       StartCoroutine(FadeIn());

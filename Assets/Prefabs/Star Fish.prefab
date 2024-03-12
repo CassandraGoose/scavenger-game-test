@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3184900288323230553
+--- !u!1 &9158363591085026448
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5404211531248013273}
-  - component: {fileID: 8634371095426002483}
-  - component: {fileID: -6981617517019018650}
-  - component: {fileID: -22727588718990314}
+  - component: {fileID: 2712906601388973673}
+  - component: {fileID: 2012291616647081361}
+  - component: {fileID: 847946270709886205}
+  - component: {fileID: -3523304471731723109}
   m_Layer: 0
-  m_Name: angel
+  m_Name: Star Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5404211531248013273
+--- !u!4 &2712906601388973673
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184900288323230553}
+  m_GameObject: {fileID: 9158363591085026448}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -34,13 +34,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8634371095426002483
+--- !u!212 &2012291616647081361
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184900288323230553}
+  m_GameObject: {fileID: 9158363591085026448}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 412354846, guid: d04ac9e1b3dd049b195810760d51ee6c, type: 3}
+  m_Sprite: {fileID: -2047164491, guid: d04ac9e1b3dd049b195810760d51ee6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,26 +86,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6981617517019018650
+--- !u!114 &847946270709886205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184900288323230553}
+  m_GameObject: {fileID: 9158363591085026448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c861095f27084591a3b0f9b0016e3bc, type: 3}
+  m_Script: {fileID: 11500000, guid: e5d5a0067fb46401f9f69dab9c9d4b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &-22727588718990314
+  spawnableObjects: []
+--- !u!50 &-3523304471731723109
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184900288323230553}
+  m_GameObject: {fileID: 9158363591085026448}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0

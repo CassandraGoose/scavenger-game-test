@@ -9,13 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a52a392937e14e8db2b514c24a40278, type: 3}
+  m_Script: {fileID: 11500000, guid: e5d5a0067fb46401f9f69dab9c9d4b26, type: 3}
   m_Name: LootItems
   m_EditorClassIdentifier: 
-  spawnableObjects:
-  - {fileID: 3184900288323230553, guid: 9e8cc0fc9b5d449208f7e0184df3acf6, type: 3}
-  - {fileID: 5993418422212434678, guid: e9dba0162ecf74904b939bc20ae9f59b, type: 3}
-  - {fileID: 4837900017145894728, guid: 73a48085fb1c648f2925536095f4f048, type: 3}
-  - {fileID: 2707231905494807157, guid: 495102cd72a2e44568f935808517c499, type: 3}
-  - {fileID: 8372440849310003156, guid: 9fe154c3a4e5847e19e1688d78f91e31, type: 3}
-  - {fileID: 9158363591085026448, guid: db82fb6e16b094605b05c8f567986183, type: 3}
