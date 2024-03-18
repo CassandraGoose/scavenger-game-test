@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.054531574, y: 0.1384263}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -152,5 +152,4 @@ MonoBehaviour:
   - {fileID: 9158363591085026448, guid: db82fb6e16b094605b05c8f567986183, type: 3}
   uiBox: {fileID: 0}
   acceptItemButton: {fileID: 0}
-  findableItems: []
   sparklePrefab: {fileID: 3925314023389083769, guid: 3a5f4c82547c84ee580a6a28f9e53c92, type: 3}
