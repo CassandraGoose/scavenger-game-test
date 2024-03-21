@@ -10,7 +10,6 @@ public class Sparkle : MonoBehaviour
 
   void Start()
   {
-    Debug.Log("Sparkle Start");
     sparkleSprite = gameObject.GetComponent<SpriteRenderer>();
     Hide();
   }

@@ -4,113 +4,139 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
+using System.Linq;
+// using UnityEngine.SceneManagement;
 
 public class ItemSpawner : MonoBehaviour
 {
-  // set in inspector
+  GameObject Sparkles;
+  SpawnableItem item;
+  bool inCollision;
+  bool found;
   public GameObject uiBox;
+
+  // dev must assign Canvas->Image->Button to acceptItemButton in each ItemSpawner.
   public Button acceptItemButton;
 
-  public GameObject sparklePrefab;
-  public SpawnableItem foundObject;
-  GameObject sparkle;
-  bool inCollision;
 
   void Awake()
   {
     GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+
+    if (GameManager.Instance != null)
+    {
+      if (GameManager.Instance.GameState != null)
+      {
+        if (GameManager.Instance.GameState.CurrentGameState != GameStateTrigger.Setup)
+        {
+          ReloadData(GameManager.Instance.GameState.GetSpawnerData(gameObject));
+        }
+      }
+    }
+  }
+
+  void GameManager_OnGameStateChanged(GameStateTrigger newState)
+  {
+    switch (newState)
+    {
+      case GameStateTrigger.Setup:
+        GameObject child = gameObject.transform.GetChild(0).gameObject;
+        uiBox = child;
+        SetupSparkles();
+        item = GetRandomSpawnable(GameManager.Instance.GameState.AvailableCollectables);
+        found = false;
+        uiBox.SetActive(false);
+        GameManager.Instance.GameState.AddItemSpawner(gameObject.name, item, found);
+        GameManager.Instance.GameState.UpdateState(GameStateTrigger.PostSetup);
+
+        break;
+    }
   }
 
   void Start()
   {
+    if (acceptItemButton == null)
+    {
+      acceptItemButton = uiBox.GetComponentsInChildren<Button>(true)[0];
+    }
+    acceptItemButton.onClick.AddListener(() => triggerCollectItem());
 
-// FOR LOADING AFTER SCENE CHANGES: 
-      // GameManager.Spawner currentSpawner = GameManager.StateData.Spawners.Find(spawner => spawner.name == gameObject.name);
-      // string foundObjectName = currentSpawner.item;
-      // foundObject = GameManager.StateData.Collectables.Find(item => item.ItemName == foundObjectName);
-    //   if (!currentSpawner.collected)
-    //   {
-    //     sparkle = Instantiate(sparklePrefab, transform.position, Quaternion.identity);
-    //   }
-    // uiBox.SetActive(false);
+  }
+
+  void SetupSparkles()
+  {
+    GameObject SparklesPrefab = Resources.Load<GameObject>("Prefabs/Sparkles/Sparkles");
+    Sparkles = Instantiate(SparklesPrefab, transform.position, Quaternion.identity);
   }
 
   void Update()
   {
-    if (Input.GetButtonDown("Submit") && inCollision)
+    if (Input.GetButtonDown("Submit") && inCollision && !found)
     {
-      DisplayUIBox(foundObject);
+
+      DisplayUIBox();
     }
   }
 
   void OnCollisionEnter2D(Collision2D collision)
   {
-    // Debug.Log($"Current game object: {gameObject.name}");
-    // Debug.Log($"Collision with {collision.gameObject.tag}");
+
     if (collision.gameObject.tag == "Player")
     {
       inCollision = true;
     }
   }
 
-  void OnCollisionExit2D(Collision2D collision)
+  public void ReloadData(GameManager.ItemSpawnerData data)
   {
-    if (collision.gameObject.tag == "Player")
+    GameObject child = gameObject.transform.GetChild(0).gameObject;
+    uiBox = child;
+    found = data.found;
+    if (!found)
     {
-      inCollision = false;
+      SetupSparkles();
+      // Debug.Log($"reloaded data: {Sparkles.name}");
     }
+    uiBox.SetActive(false);
+    item = data.item;
+
+    // Debug.Log($"reloaded data: {found}");
+
+    Debug.Log($"reloaded data:  {item.PrefabName}");
+
+    // Debug.Log($"reloaded data:  {uiBox.name}");
   }
-
-  void OnDestroy()
-  {
-    GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
-  }
-
-  void GameManager_OnGameStateChanged(GameState newState)
-  {
-    if (newState == GameState.Setup)
-    {
-      foundObject = GetRandomSpawnable(GameManager.StateData.Collectables);
-      sparkle = Instantiate(sparklePrefab, transform.position, Quaternion.identity);
-      uiBox.SetActive(false);
-
-    }
-
-  }
-
-  public void DisplayUIBox(SpawnableItem foundObject)
-  {
-    uiBox.SetActive(true);
-    Image foundItemUI = GameObject.Find("FoundItemUI").GetComponent<Image>();
-
-    foundItemUI.sprite = foundObject.Prefab.GetComponent<SpriteRenderer>().sprite;
-
-    GameObject foundItemText = GameObject.Find("FoundItemText");
-    foundItemText.GetComponent<TextMeshProUGUI>().text = "Would you like to take this " + foundObject.ItemName + "?";
-
-
-    acceptItemButton.onClick.RemoveAllListeners();
-    acceptItemButton.onClick.AddListener(() => triggerCollectItem(foundObject));
-  }
-
-
 
   public SpawnableItem GetRandomSpawnable(List<SpawnableItem> findableItems)
   {
-    int random = Random.Range(0, GameManager.StateData.Collectables.Count - 1);
-    Debug.Log($"random: {random}");
-    return findableItems[random];
+    int random = Random.Range(0, findableItems.Count);
+    return findableItems.ElementAt(random);
   }
 
-  public void triggerCollectItem(SpawnableItem foundObject)
+  void DisplayUIBox()
   {
-    // Debug.Log($"found object: {foundObject.ItemName}");
-    GameManager.Instance.UpdateGameState(GameState.PlayerCollectItem, foundObject);
-    uiBox.SetActive(false);
-    inCollision = false;
-    sparkle.GetComponent<Sparkle>().DestroySparkle();
-    Destroy(foundObject);
-    // all of this is for naught unless we tell unity to not erase and reset everything every time a new scene loads.
+
+      uiBox.SetActive(true);
+
+      Image foundItemUI = GameObject.Find("FoundItemUI").GetComponent<Image>();
+      Debug.Log($"item: {item.PrefabName}");
+      string thing = $"Prefabs/Fish/{item.PrefabName}";
+      Debug.Log($"fjdls:JJIII: {Resources.Load<GameObject>(thing).name}");
+      foundItemUI.sprite = Resources.Load<GameObject>(thing).GetComponent<SpriteRenderer>().sprite;
+I 
+      GameObject foundItemText = GameObject.Find("FoundItemText");
+      foundItemText.GetComponent<TextMeshProUGUI>().text = "Would you like to take this " + item.ItemName + "?";
+
   }
 
+  void triggerCollectItem()
+  {
+    GameManager.Instance.UpdateGameState(GameStateTrigger.PlayerCollectItem);
+    inCollision = false;
+    Sparkles.SetActive(false);
+    found = true;
+    uiBox.SetActive(false);
+    GameManager.ItemSpawnerData updatedData = new GameManager.ItemSpawnerData(gameObject.name, item, found);
+    GameManager.Instance.GameState.CollectItem(updatedData);
+  }
 }

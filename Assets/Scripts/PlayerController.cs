@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    Debug.Log("PlayerController Start");
     rigidbody2d = GetComponent<Rigidbody2D>();
     transform.position = startingPosition.initialValue;
     collectedItems = new List<SpawnableItem>();
@@ -40,7 +39,8 @@ public class PlayerController : MonoBehaviour
     collectedItems.Add(fish);
     foreach(var item in collectedItems)
     {
-      Debug.Log(item.ItemName);
+      // Debug.Log(item.ItemName);
     }
   }
 }
+

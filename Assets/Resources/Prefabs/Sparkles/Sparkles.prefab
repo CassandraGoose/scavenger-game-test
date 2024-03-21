@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4578826622800144845}
   - component: {fileID: 8682275002790879776}
   m_Layer: 0
-  m_Name: sparkles
+  m_Name: Sparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

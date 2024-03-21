@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SpawnableItem : MonoBehaviour
 {
   public string ItemName { get; set; }
-  public SpawnableItem Prefab { get; set; }
+  public GameObject Prefab { get; set; }
+  public string PrefabName { get; set; }
   public string Rarity { get; set; }
   Rigidbody2D rigidbody2d;
 
-  public SpawnableItem(string name, SpawnableItem prefab)
+  public SpawnableItem(string name, GameObject prefab)
   {
     ItemName = name;
-    Prefab = prefab;
+    PrefabName = prefab.name;
     Rarity = getRarity(name);
   }
 
 
   void Start()
   {
-    Debug.Log("SpawnableItem Start");
     rigidbody2d = GetComponent<Rigidbody2D>();
     if (gameObject.transform.parent == gameObject.GetComponentsInParent<Transform>()[1]) {
        //Do stuff here
@@ -42,5 +43,10 @@ public class SpawnableItem : MonoBehaviour
       default:
         return "common";
     }
+  }
+
+  public override string ToString()
+  {
+    return EditorJsonUtility.ToJson(this);
   }
 }
