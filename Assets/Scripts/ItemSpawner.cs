@@ -123,7 +123,7 @@ public class ItemSpawner : MonoBehaviour
       string thing = $"Prefabs/Fish/{item.PrefabName}";
       Debug.Log($"fjdls:JJIII: {Resources.Load<GameObject>(thing).name}");
       foundItemUI.sprite = Resources.Load<GameObject>(thing).GetComponent<SpriteRenderer>().sprite;
-I 
+
       GameObject foundItemText = GameObject.Find("FoundItemText");
       foundItemText.GetComponent<TextMeshProUGUI>().text = "Would you like to take this " + item.ItemName + "?";
 
